@@ -1,0 +1,18 @@
+services:
+  bengali-library:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: bengali-library:latest
+    container_name: bengali-library
+    ports:
+      - "7654:7654"
+    volumes:
+      - ./bengali-literature:/app/bengali-literature:rw
+      - ./ocr:/app/ocr:rw
+      - ./what-you-doing:/app/what-you-doing:rw
+      - ./backend/main.py:/app/main.py:ro
+      - ./frontend:/app/frontend:ro
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.git/
+.gitignore
+node_modules/
+*.zip
+*.tar.gz
+ocr/*.pdf
+.DS_Store
+Thumbs.db
