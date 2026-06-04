@@ -4,10 +4,10 @@
 #
 # Run in PowerShell:
 #   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-#   irm https://raw.githubusercontent.com/ohidsajol/bengali-library/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main/install.ps1 | iex
 # ══════════════════════════════════════════════════════════════════════
 
-$RAW      = "https://raw.githubusercontent.com/ohidsajol/bengali-library/main"
+$RAW      = "https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main"
 $APP_DIR  = "$env:USERPROFILE\.bengali_library_docker"
 $LIB_FILE = "$APP_DIR\library_directory.txt"
 $BIN_DIR  = "$APP_DIR"

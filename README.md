@@ -3,7 +3,7 @@
 > A beautiful, fully offline digital library for Bengali PDF books.  
 > Runs anywhere with Docker. No cloud. No API keys. Your data stays on your machine.
 
-![Bengali Digital Library Screenshot](https://raw.githubusercontent.com/ohidsajol/bengali-library/main/docs/screenshot.png)
+![Bengali Digital Library Screenshot](https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main/docs/screenshot.png)
 
 ---
 
@@ -37,7 +37,7 @@
 
 ```bash
 # Install (one-time)
-curl -fsSL https://raw.githubusercontent.com/ohidsajol/bengali-library/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main/install.sh | bash
 
 # Start the library
 bengali-library
@@ -50,7 +50,7 @@ bengali-library
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 
 # Install (one-time)
-irm https://raw.githubusercontent.com/ohidsajol/bengali-library/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main/install.ps1 | iex
 
 # Start the library (new terminal)
 bengali-library

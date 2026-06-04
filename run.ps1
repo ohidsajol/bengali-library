@@ -4,7 +4,7 @@
 #
 # First-time install:
 #   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-#   irm https://raw.githubusercontent.com/ohidsajol/bengali-library/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main/install.ps1 | iex
 #
 # Usage:
 #   bengali-library                       start / open in browser

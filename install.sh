@@ -3,7 +3,7 @@
 # install.sh — Bengali Digital Library one-command installer
 # Linux + macOS. Installs Docker if missing, then installs the app.
 #
-#   curl -fsSL https://raw.githubusercontent.com/ohidsajol/bengali-library/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main/install.sh | bash
 # ══════════════════════════════════════════════════════════════════════
 set -euo pipefail
 
@@ -15,7 +15,7 @@ die()  { echo -e "${R}  ✗${N} $*" >&2; exit 1; }
 
 APP_DIR="$HOME/.bengali_library_docker"
 BIN_DIR="$HOME/.local/bin"
-RAW="https://raw.githubusercontent.com/ohidsajol/bengali-library/main"
+RAW="https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main"
 
 echo -e "\n${B}${C}Bengali Digital Library — Installer${N}\n"
 
