@@ -4,7 +4,7 @@
 #
 # First-time install:
 #   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-#   irm https://raw.githubusercontent.com/YOURNAME/bengali-library/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/ohidsajol/bengali-library/main/install.ps1 | iex
 #
 # Usage:
 #   bengali-library                       start / open in browser
@@ -25,7 +25,7 @@ param(
     [string]$SetLibrary = ""
 )
 
-$IMAGE     = "YOURNAME/bengali-library:latest"
+$IMAGE     = "ohidsajol/bengali-library:latest"
 $PORT      = 7654
 $CONTAINER = "bengali-library"
 $APP_DIR   = "$env:USERPROFILE\.bengali_library_docker"

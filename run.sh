@@ -22,7 +22,7 @@ warn() { echo -e "${Y}  !${N} $*"; }
 die()  { echo -e "${R}  ✗${N} $*" >&2; exit 1; }
 hdr()  { echo -e "\n${B}${C}$*${N}\n"; }
 
-IMAGE="YOURNAME/bengali-library:latest"
+IMAGE="ohidsajol/bengali-library:latest"
 PORT=7654
 APP_DIR="$HOME/.bengali_library_docker"
 LIB_FILE="$APP_DIR/library_directory.txt"
