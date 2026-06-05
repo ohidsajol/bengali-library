@@ -25,7 +25,7 @@ param(
     [string]$SetLibrary = ""
 )
 
-$IMAGE     = "YOURNAME/bengali-library:latest"
+$IMAGE     = "ohidsajol/bengali-library:latest"
 $PORT      = 7654
 $CONTAINER = "bengali-library"
 $APP_DIR   = "$env:USERPROFILE\.bengali_library_docker"
