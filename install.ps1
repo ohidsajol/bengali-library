@@ -4,10 +4,10 @@
 #
 # Run in PowerShell:
 #   Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-#   irm https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/YOURNAME/bengali-library/main/install.ps1 | iex
 # ══════════════════════════════════════════════════════════════════════
 
-$RAW      = "https://raw.githubusercontent.com/ohidsajol/bengali-library/refs/heads/main"
+$RAW      = "https://raw.githubusercontent.com/YOURNAME/bengali-library/main"
 $APP_DIR  = "$env:USERPROFILE\.bengali_library_docker"
 $LIB_FILE = "$APP_DIR\library_directory.txt"
 $BIN_DIR  = "$APP_DIR"
@@ -82,22 +82,22 @@ function Install-WSL2AndDocker {
     $dockerUrl = "https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe"
     $dockerExe = "$env:TEMP\DockerDesktopInstaller.exe"
     Write-Info "Downloading Docker Desktop (~600 MB, please wait)..."
-    $wc = New-Object System.Net.WebClient
-    $lastPct = -1
-    $wc.DownloadProgressChanged += {
-        param($s, $e)
-        $pct = $e.ProgressPercentage
-        if ($pct -ne $lastPct -and $pct % 5 -eq 0) {
-            Write-Host "`r    $pct% ..." -NoNewline
-            $script:lastPct = $pct
-        }
+    # Use BITS transfer for large downloads — works in all PS execution contexts
+    # Falls back to Invoke-WebRequest if BITS is unavailable
+    try {
+        Import-Module BitsTransfer -ErrorAction Stop
+        Write-Host "    Downloading..." -NoNewline
+        Start-BitsTransfer -Source $dockerUrl -Destination $dockerExe -DisplayName "Docker Desktop"
+        Write-Host "`r    Download complete.              "
+        Write-OK "Docker Desktop downloaded (via BITS)."
+    } catch {
+        # BITS not available — use Invoke-WebRequest (blocking, no progress bar but reliable)
+        Write-Info "  Downloading with Invoke-WebRequest (no progress bar)..."
+        $ProgressPreference = 'SilentlyContinue'   # suppress slow PS progress UI
+        Invoke-WebRequest -Uri $dockerUrl -OutFile $dockerExe -UseBasicParsing
+        $ProgressPreference = 'Continue'
+        Write-OK "Docker Desktop downloaded."
     }
-    $completed = $false
-    $wc.DownloadFileCompleted += { $script:completed = $true }
-    $wc.DownloadFileAsync([Uri]$dockerUrl, $dockerExe)
-    while (-not $completed) { Start-Sleep 1 }
-    Write-Host "`r    100% - Download complete.   "
-    Write-OK "Docker Desktop downloaded."
 
     # ── Install Docker Desktop silently ───────────────────────────
     Write-Info "Installing Docker Desktop (this takes ~2 minutes)..."
